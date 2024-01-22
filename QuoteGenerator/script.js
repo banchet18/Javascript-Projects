@@ -1,15 +1,17 @@
-let apiQuotes = [];
+let Quotes = [];
 
-//Get Quotes from Api
-async function getQuotes() {
-  const apiUrl = "https://type.fit/api/quotes";
-  try {
-    const response = await fetch(apiUrl);
-    apiQuotes = await response.json();
-    console.log(apiQuotes[12]);
-  } catch (error) {
-    //Catch Error Here
-  }
+function newQuotes() {
+  const Quote = Quotes[Math.floor(Math.random() * Quotes.length)];
+  console.log(Quote);
 }
-//On Load
+
+async function getQuotes() {
+  const apiQuotes = "https://type.fit/api/quotes";
+  try {
+    const response = await fetch(apiQuotes);
+    Quotes = await response.json();
+    newQuotes();
+  } catch (error) {}
+}
+
 getQuotes();
