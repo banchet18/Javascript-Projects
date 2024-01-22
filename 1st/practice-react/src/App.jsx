@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 
 const App = () => {
-  const [newData, setNewData] = useState();
+  const [newData, setNewData] = useState("");
 
   useEffect(() => {
-    const getQuotes = async () => {
-      const response = await fetch("https://type.fit/api/quotes");
-      const data = await response.json();
-      setNewData(data);
-    };
     getQuotes();
   }, []);
-  console.log(newData);
+  const getQuotes = async () => {
+    const response = await fetch("https://type.fit/api/quotes");
+    const arrayData = await response.json();
+    const data = arrayData[Math.floor(Math.random() * arrayData.length)];
+    setNewData(data);
+  };
+
   return (
     <>
       <div>
         <div>
           <i>{`" `}</i>
-          <span>Some quote</span>
+          <span>{newData.text}</span>
         </div>
-        <div>author</div>
+        <div>{newData.author}</div>
 
         <div>
           <button>twitter</button>
-          <button>next</button>
+          <button onClick={() => getQuotes}>next</button>
         </div>
       </div>
     </>
