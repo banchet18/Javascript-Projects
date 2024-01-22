@@ -1,8 +1,8 @@
 let Quotes = [];
 
+//show new quote
 function newQuotes() {
   const Quote = Quotes[Math.floor(Math.random() * Quotes.length)];
-  console.log(Quote);
 }
 
 async function getQuotes() {
@@ -11,7 +11,9 @@ async function getQuotes() {
     const response = await fetch(apiQuotes);
     Quotes = await response.json();
     newQuotes();
-  } catch (error) {}
+  } catch (error) {
+    //catch error here
+  }
 }
-
+//on load
 getQuotes();
