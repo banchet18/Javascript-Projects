@@ -16,9 +16,9 @@ const App = () => {
     getQuotes();
   }, []);
 
-  const handleClick = () => {
-    getQuotes();
-  };
+  // const handleClick = () => {
+  //   getQuotes();
+  // };
 
   return (
     <>
@@ -30,7 +30,7 @@ const App = () => {
         <div>{author}</div>
         <div>
           <button>twitter</button>
-          <button onClick={handleClick}>next</button>
+          <button onClick={getQuotes}>next</button>
         </div>
       </div>
     </>
